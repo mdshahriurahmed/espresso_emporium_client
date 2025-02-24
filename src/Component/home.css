@@ -1,0 +1,5 @@
+.product {
+    background-image: url('../../images/more/4.png'), url('../../images/more/5.png');
+    background-repeat: no-repeat;
+    background-position: top left, bottom right;
+}
