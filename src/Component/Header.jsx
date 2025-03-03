@@ -1,10 +1,18 @@
-import React from 'react';
+
 import { NavLink } from 'react-router';
+import { EspressoContext } from '../ContextApi/Context';
+import { useContext } from 'react';
 
 const Header = () => {
+    const { newuser, processSignOut } = useContext(EspressoContext);
+    const handleSignOut = () => {
+        processSignOut()
+    }
+
     const navItems = <>
         <li><NavLink className='text-white' to='/' >Home</NavLink></li>
         <li><NavLink className='text-white' to='/products' >Products</NavLink></li>
+        {newuser ? <li><NavLink className='text-white' to='/dashboard' >Dashboard</NavLink></li> : <></>}
     </>
     return (
         <div className='bg-amber-950'>
@@ -28,7 +36,7 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                    {newuser ? <button onClick={handleSignOut} className="btn bg-white  hover:bg-amber-950 border-2 border-white hover:border-white hover:text-white">SignOut</button> : <NavLink to='/login' className="btn bg-white  hover:bg-amber-950 border-2 border-white hover:border-white hover:text-white">Login</NavLink>}
                 </div>
             </div>
         </div>
